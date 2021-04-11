@@ -45,5 +45,17 @@ function removeItem(e){
 
 // filter items
 function filterItem(e){
-	
+	// convert text to lower
+	var text = e.target.value.toLowerCase();
+	// get list items
+	var items = itemList.getElementsByTagName('li');
+	Array.from(items).forEach( (item) => {
+		var itemName = item.firstChild.textContent;
+		if(itemName.toLowerCase().indexOf(text) != -1){
+			item.style.display = 'block';
+		}
+		else{
+			item.style.display = 'none';
+		}
+	})
 }
