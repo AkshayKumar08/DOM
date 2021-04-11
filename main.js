@@ -1,10 +1,14 @@
 var form = document.getElementById("addForm");
 var itemList = document.getElementById("items");
+var filter = document.getElementById("filter");
+
 
 // for submit event
 form.addEventListener('submit', addItem);
 // delete event
 itemList.addEventListener('click', removeItem);
+// filter event
+filter.addEventListener('keyup', filterItem);
 
 function addItem(e){
 	e.preventDefault();
@@ -31,5 +35,15 @@ function addItem(e){
 
 // remove item
 function removeItem(e){
+	if( e.target.classList.contains('delete') ){
+		if( confirm('Are you sure')){
+			var li = e.target.parentElement;
+			itemList.removeChild(li);
+		}
+	}
+}
+
+// filter items
+function filterItem(e){
 	
 }
